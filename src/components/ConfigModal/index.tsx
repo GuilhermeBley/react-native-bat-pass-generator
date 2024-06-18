@@ -1,43 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Modal, View, Text, Button, StyleSheet } from 'react-native';
 
-const App = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+interface ConfigModalProps {
+  modalVisible: boolean;
+  setModalVisible: (visible: boolean) => void;
+}
 
+const ConfigModal: React.FC<ConfigModalProps> = ({ modalVisible, setModalVisible }) => {
   return (
-    <View style={styles.container}>
-      <Button
-        title="Show Modal"
-        onPress={() => setModalVisible(true)}
-      />
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello, I'm a modal!</Text>
-            <Button
-              title="Hide Modal"
-              onPress={() => setModalVisible(false)}
-            />
-          </View>
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={modalVisible}
+      onRequestClose={() => {
+        setModalVisible(!modalVisible);
+      }}
+    >
+      <View style={styles.centeredView}>
+        <View style={styles.modalView}>
+          <Text style={styles.modalText}>Hello, I'm a modal!</Text>
+          <Button
+            title="Hide Modal"
+            onPress={() => setModalVisible(false)}
+          />
         </View>
-      </Modal>
-    </View>
+      </View>
+    </Modal>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   centeredView: {
     flex: 1,
     justifyContent: 'center',
@@ -65,4 +57,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default ConfigModal;
