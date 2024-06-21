@@ -6,8 +6,11 @@ import * as Clipboard from 'expo-clipboard';
 import { styles } from './BatButtonStyles';
 import { PasswordConfig } from "../../services/PasswordConfig";
 
+interface BatButtonProps{
+  passwordConfig: PasswordConfig | null
+}
 
-export function BatButton(passwordConfig: PasswordConfig | null = null) {
+const BatButton: React.FC<BatButtonProps> = ({ passwordConfig }) => {
   const [pass, setPass] = useState('');
 
   function handleGenerateButton() {
@@ -40,3 +43,5 @@ export function BatButton(passwordConfig: PasswordConfig | null = null) {
     </>
   );
 }
+
+export default BatButton;

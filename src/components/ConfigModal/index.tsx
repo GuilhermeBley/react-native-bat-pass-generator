@@ -1,12 +1,17 @@
 import React from 'react';
 import { Modal, View, Text, Button, StyleSheet } from 'react-native';
+import { PasswordConfig } from '../../services/PasswordConfig'
 
 interface ConfigModalProps {
   modalVisible: boolean;
   setModalVisible: (visible: boolean) => void;
+  onValidSubmit: (newConfig: PasswordConfig) => void;
 }
 
-const ConfigModal: React.FC<ConfigModalProps> = ({ modalVisible, setModalVisible }) => {
+const ConfigModal: React.FC<ConfigModalProps> = ({
+  modalVisible,
+  setModalVisible,
+  onValidSubmit}) => {
   return (
     <Modal
       animationType="slide"
@@ -18,9 +23,9 @@ const ConfigModal: React.FC<ConfigModalProps> = ({ modalVisible, setModalVisible
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <Text style={styles.modalText}>Hello, I'm a modal!</Text>
+          <Text style={styles.modalText}>Configurações da senha</Text>
           <Button
-            title="Hide Modal"
+            title="Salvar alterações"
             onPress={() => setModalVisible(false)}
           />
         </View>
